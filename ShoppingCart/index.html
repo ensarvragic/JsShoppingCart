@@ -4,64 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple JavaScript Shopping Cart</title>
-    <style>
-        /* Ovde možete dodati svoje stilizacije */
-    </style>
+    <title>Simple Shopping Cart</title>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-<div class="parent">
-    <h1 class="title">Simple JavaScript Shopping Cart</h1>
-    <!-- Proizvod 1 -->
-    <div class="carts" id="Products">
-        <div class="product-1"> 
-            <h3>Product 1</h3>
-            <p>Product description <span>excerpt</span></p>
-            <p class="price">$5.05</p>
-            <button class="product-button" onclick="addToCart('Product 1', 5.05)"> Add To Cart </button>
-        </div>
-        <!-- Proizvod 2 -->
-        <div class="product-2">
-            <h3>Product 2</h3>
-            <p>Product description <span>excerpt</span></p>
-            <p class="price">$49.99</p>
-            <button class="product-button" onclick="addToCart('Product 2', 49.99)">Add To Cart </button>
-        </div>
-        <!-- Proizvod 3 -->
-        <div class="product-3">
-            <h3>Product 3</h3>
-            <p>Product description <span>excerpt</span></p>
-            <p class="price">$99.99</p>
-            <button class="product-button" onclick="addToCart('Product 3', 99.99)">Add To Cart </button>
-        </div>
+<h1>Simple Shopping Cart</h1>
+
+<div id="product-list">
+    <div class="product">
+        <h3>Product 1</h3>
+        <p>Prvi proizvod</p>
+        <p class="price">$5.05</p>
+        <button class="add-to-cart" data-name="Product 1" data-price="5.05">Add To Cart</button>
     </div>
-    <!-- !!! Div za prikaz korpe nakon klika !!! -->
-    <div class="cart-list">
-        <h1>Cart</h1>
-        <div class="product-price">
-            <p>Product</p>
-            <p>Price</p>
-        </div>
-        <hr class="hr2">
-        <hr class="middle-hr">
-        <!-- !!! Div za računanje cena proizvoda i broja proizvoda !!! -->
-        <div class="total-items">
-            <div class="items">
-                <p>Items</p>
-                <hr>
-                <p id="cart-counter">x 0</p>
-                <hr>
-            </div>
-            <div class="total">
-                <p>Total</p>
-                <hr>
-                <p>$0.00</p>
-                <hr>
-            </div>
-        </div>
-        <!-- !!! Buttons for clean and checkout ShoppingCart-->
-        <button class="main-btns" onclick="emptyCart()">Empty Cart</button>
-        <button class="main-btns">Checkout</button>
+    <div class="product">
+        <h3>Product 2</h3>
+        <p>Drugi proizvod</p>
+        <p class="price">$49.99</p>
+        <button class="add-to-cart" data-name="Product 2" data-price="49.99">Add To Cart</button>
+    </div>
+    <div class="product">
+        <h3>Product 3</h3>
+        <p>Treci proizvod</p>
+        <p class="price">$99.99</p>
+        <button class="add-to-cart" data-name="Product 3" data-price="99.99">Add To Cart</button>
     </div>
 </div>
+
+<div id="cart">
+    <h2>Cart</h2>
+    <ul id="cart-items"></ul>
+    <p id="cart-total">Total: $0.00</p>
+    <button id="empty-cart">Empty Cart</button>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

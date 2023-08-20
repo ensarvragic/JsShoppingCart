@@ -1,31 +1,39 @@
-const counter = document.getElementById('cart-counter');
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+const cartItemsList = document.getElementById('cart-items');
+const cartTotal = document.getElementById('cart-total');
+const emptyCartButton = document.getElementById('empty-cart');
 
-const cart = [];
+const products = [];
 
-const addToCart = (item) => {
-    cart.push(item);
-    updateCartCounter();
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', addToCart);
+});
+
+emptyCartButton.addEventListener('click', emptyCart);
+
+function addToCart(event) {
+    const productName = event.target.getAttribute('data-name');
+    const productPrice = parseFloat(event.target.getAttribute('data-price'));
+
+    products.push({ name: productName, price: productPrice });
+    updateCart();
 }
 
-const emptyCart = () => {
-    cart.length = 0;
-    updateCartCounter();
+function emptyCart() {
+    products.length = 0;
+    updateCart();
 }
 
-const updateCartCounter = () => {
-    const counter = document.getElementById('cart-counter');
-    counter.innerHTML = cart.length;
-}
+function updateCart() {
+    cartItemsList.innerHTML = '';
+    let total = 0;
 
-updateCartitems = () => {
-    cartItemsContainer.innerHTML = '';
-    cart.forEach(item => {
-        const itemContainer = document.createElement('div');
-        itemContainer.classList.add('cart-item');
-        itemContainer.innerHTML = `
-        <p>${item.name}</p>
-        <p>${item.price.toFixed(2)}</p>
-        `;
-     
+    products.forEach(product => {
+        const item = document.createElement('li');
+        item.innerText = `${product.name} - $${product.price.toFixed(2)}`;
+        cartItemsList.appendChild(item);
+        total += product.price;
     });
+
+    cartTotal.innerText = `Total: $${total.toFixed(2)}`;
 }
